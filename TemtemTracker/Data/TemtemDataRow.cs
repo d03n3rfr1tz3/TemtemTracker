@@ -9,6 +9,7 @@ namespace TemtemTracker.Data
     public class TemtemDataRow
     {
         public String name;
+        public int fights;
         public int encountered;
         public double lumaChance;
         public double encounteredPercent;

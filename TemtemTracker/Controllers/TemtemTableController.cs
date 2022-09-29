@@ -110,6 +110,7 @@ namespace TemtemTracker.Controllers
                 //Remove UI <-> data binding from hash map
                 UIElements.Remove(row);
                 //Remove row info from total
+                dataTable.total.fights -= row.fights;
                 dataTable.total.encountered -= row.encountered;
                 dataTable.total.lumaChance = lumaCalculator.CalculateChance(dataTable.total.encountered, "");
                 dataTable.total.timeToLuma = lumaCalculator.GetTimeToLuma(dataTable.total.encountered, dataTable.timer.durationTime, "");
@@ -133,7 +134,7 @@ namespace TemtemTracker.Controllers
             UIElements[row].Item2.Show();
         }
 
-        public void AddTemtem(string temtemName)
+        public void AddTemtem(string temtemName, bool increaseFights)
         {
             lock (saveLock)
             {
@@ -152,16 +153,19 @@ namespace TemtemTracker.Controllers
                     targetRow = new TemtemDataRow
                     {
                         name = temtemName,
-                        encountered = 0
+                        encountered = 0,
+                        fights = 0
                     };
                     dataTable.rows.Add(targetRow);
                     UIElements[targetRow] = new Tuple<TemtemTableRowUI, IndividualTrackerWindow>(new TemtemTableRowUI(targetRow, this), new IndividualTrackerWindow(targetRow, settingsController, dataTable.timer.durationTime));
                     trackerUI.AddRowToTable(UIElements[targetRow].Item1);
                 }
                 //Calculate stuff
+                if (increaseFights) dataTable.total.fights++;
                 dataTable.total.encountered++;
                 dataTable.total.lumaChance = lumaCalculator.CalculateChance(dataTable.total.encountered, dataTable.total.name);
                 dataTable.total.timeToLuma = lumaCalculator.GetTimeToLuma(dataTable.total.encountered, dataTable.timer.durationTime, dataTable.total.name);
+                if (increaseFights) targetRow.fights++;
                 targetRow.encountered++;
                 targetRow.lumaChance = lumaCalculator.CalculateChance(targetRow.encountered, targetRow.name);
                 targetRow.timeToLuma = lumaCalculator.GetTimeToLuma(targetRow.encountered, dataTable.timer.durationTime, targetRow.name);
@@ -195,6 +199,7 @@ namespace TemtemTracker.Controllers
                 UIElements.Clear();
                 dataTable.timer.durationTime = 0;
                 dataTable.timer.temtemCount = 0;
+                dataTable.total.fights = 0;
                 dataTable.total.encountered = 0;
                 dataTable.total.encounteredPercent = 1;
                 dataTable.total.lumaChance = 0;
@@ -254,6 +259,7 @@ namespace TemtemTracker.Controllers
                 total = new TemtemDataRow()
             };
             dataTable.total.name = "Total";
+            dataTable.total.fights = 0;
             dataTable.total.encountered = 0;
             dataTable.total.encounteredPercent = 0.0;
             dataTable.total.lumaChance = 0.0;

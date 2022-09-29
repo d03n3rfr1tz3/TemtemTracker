@@ -117,6 +117,7 @@ namespace TemtemTracker
             else
             {
                 labelTemtemName.Text = temtemRow.name;
+                labelFights.Text = temtemRow.fights.ToString();
                 labelEncounters.Text = temtemRow.encountered.ToString();
                 labelChanceLuma.Text = HelperMethods.DoubleToPercentage(temtemRow.lumaChance);
                 labelEncounteredPercent.Text = HelperMethods.DoubleToPercentage(temtemRow.encounteredPercent);

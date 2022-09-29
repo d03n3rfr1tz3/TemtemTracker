@@ -207,10 +207,12 @@ namespace TemtemTracker.Controllers
                         //Log the encounter in the database
                         DatabaseController.Instance.LogEncounter(results);
                         //Add the encounters to the UI
-                        results.ForEach(result => {
+                        var sameFight = results.Count == 1 || results.FirstOrDefault() == results.LastOrDefault();
+                        for (int i = 0; i < results.Count; i++)
+                        {
                             //Here we add the detected Temtem to the UI
-                            tableController.AddTemtem(result);
-                        });
+                            tableController.AddTemtem(results[i], !sameFight || i == 0);
+                        }
                         if(autoresumeEnabled && pauseWasAutopause)
                         {
                             settingsController.ToggleTimerPaused();

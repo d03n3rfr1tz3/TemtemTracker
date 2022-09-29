@@ -35,6 +35,7 @@
             this.labelEncounters = new System.Windows.Forms.Label();
             this.labelChanceLuma = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelFights = new System.Windows.Forms.Label();
             this.labelTimer = new System.Windows.Forms.Label();
             this.labelTemtemPerHour = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
@@ -116,11 +117,13 @@
             // 
             this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.labelTimer, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.labelTemtemPerHour, 1, 0);
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.Controls.Add(this.labelFights, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.labelTimer, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.labelTemtemPerHour, 2, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(18, 149);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -129,6 +132,19 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(378, 57);
             this.tableLayoutPanel2.TabIndex = 2;
+            // 
+            // labelFights
+            // 
+            this.labelFights.AutoSize = true;
+            this.labelFights.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelFights.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFights.Location = new System.Drawing.Point(4, 0);
+            this.labelFights.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelFights.Name = "labelFights";
+            this.labelFights.Size = new System.Drawing.Size(181, 57);
+            this.labelFights.TabIndex = 1;
+            this.labelFights.Text = "10000";
+            this.labelFights.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelTimer
             // 
@@ -188,5 +204,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label labelTemtemPerHour;
         private System.Windows.Forms.Label labelTimer;
+        private System.Windows.Forms.Label labelFights;
     }
 }
